@@ -1,0 +1,101 @@
+<header class="top-navbar">
+  <div class="navbar-inner">
+    <div class="brand-area">
+      <a routerLink="/" class="brand-link" (click)="closeMobileMenu()">
+        <div class="logo-circle">
+          <mat-icon>water_drop</mat-icon>
+        </div>
+
+        <div class="brand-text">
+          <h1>EWPAS</h1>
+
+          <span> Efficient Water Preference and Allocation System </span>
+        </div>
+      </a>
+    </div>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      @for (item of navItems; track item.path) {
+        <a
+          [routerLink]="item.path"
+          class="nav-item"
+          [class.active]="isActive(item.path)"
+          [attr.aria-current]="isActive(item.path) ? 'page' : null"
+        >
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span>{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+    <div class="header-actions">
+      <button
+        mat-button
+        class="export-btn"
+        type="button"
+        title="Export all data as CSV"
+        aria-label="Export all data as CSV"
+        (click)="exportService.exportAllData()"
+      >
+        <mat-icon>file_download</mat-icon>
+        <span>Export CSV</span>
+      </button>
+
+      <button
+        mat-icon-button
+        class="theme-toggle"
+        type="button"
+        title="Toggle theme"
+        aria-label="Toggle theme"
+        (click)="theme.toggle()"
+      >
+        <mat-icon>
+          {{ theme.isDark() ? "light_mode" : "dark_mode" }}
+        </mat-icon>
+      </button>
+
+      <button
+        mat-icon-button
+        class="mobile-menu-btn"
+        type="button"
+        title="Navigation menu"
+        [attr.aria-label]="
+          isMobileMenuOpen() ? 'Close navigation' : 'Open navigation'
+        "
+        [attr.aria-expanded]="isMobileMenuOpen()"
+        (click)="toggleMobileMenu()"
+      >
+        <mat-icon>
+          {{ isMobileMenuOpen() ? "close" : "menu" }}
+        </mat-icon>
+      </button>
+    </div>
+  </div>
+  <div
+    class="mobile-nav-overlay"
+    [class.open]="isMobileMenuOpen()"
+    (click)="closeMobileMenu()"
+  >
+    <aside class="mobile-nav-panel" (click)="$event.stopPropagation()">
+      <nav class="mobile-nav-list" aria-label="Mobile navigation">
+        @for (item of navItems; track item.path) {
+          <a
+            [routerLink]="item.path"
+            class="mobile-nav-item"
+            [class.active]="isActive(item.path)"
+            [attr.aria-current]="isActive(item.path) ? 'page' : null"
+            (click)="closeMobileMenu()"
+          >
+            <span class="mobile-nav-icon">
+              <mat-icon>{{ item.icon }}</mat-icon>
+            </span>
+
+            <span>{{ item.label }}</span>
+
+            @if (isActive(item.path)) {
+              <mat-icon class="mobile-nav-check"> check </mat-icon>
+            }
+          </a>
+        }
+      </nav>
+    </aside>
+  </div>
+</header>

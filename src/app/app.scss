@@ -1,0 +1,54 @@
+.layout-wrapper {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+.main-content {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.app-footer {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 14px 20px;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+}
+
+.layout-wrapper {
+  width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: clip;
+}
+
+.main-content {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.app-footer {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(0.75rem, 3vw, 1.25rem);
+  text-align: center;
+  font-size: clamp(0.7rem, 1.5vw, 0.75rem);
+  line-height: 1.5;
+  color: var(--text-dim);
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}

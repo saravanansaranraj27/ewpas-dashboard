@@ -1,0 +1,194 @@
+<div class="monitor-container fade-in">
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="eyebrow">
+        <span class="live-dot"></span>
+        WATER MONITORING
+      </div>
+
+      <h1>
+        Water Level and<br />
+        Water Quality Monitoring
+      </h1>
+
+      <p>
+        Monitor water level, water quality, flow rate,<br />
+        and water usage using the connected sensors.
+      </p>
+
+      <div class="hero-badges">
+        <div class="badge">
+          <mat-icon>sensors</mat-icon>
+          Connected Sensors
+        </div>
+
+        <div class="badge">
+          <mat-icon>water_drop</mat-icon>
+          Water Level
+        </div>
+
+        <div class="badge">
+          <mat-icon>science</mat-icon>
+          Water Quality
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-image-placeholder">
+      <div class="monitor-display">
+        <div class="monitor-display-inner">
+          <div class="monitor-display-status">
+            <span></span>
+            PROTOTYPE
+          </div>
+
+          <div class="monitor-display-icon">
+            <mat-icon>sensors</mat-icon>
+          </div>
+
+          <div class="monitor-display-value">
+            <strong>{{ latestSensor.waterLevelPercent ?? 20 }}%</strong>
+            <span>WATER LEVEL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="monitor-content">
+    <div class="section-header">
+      <div>
+        <span class="section-eyebrow">SENSOR DATA</span>
+        <h2>Water Level and Water Quality</h2>
+        <p>Recorded prototype values from the water monitoring system.</p>
+      </div>
+
+      <div class="connection-status">
+        <div class="connection-status-icon">
+          <mat-icon>check_circle</mat-icon>
+        </div>
+
+        <strong>Prototype Data</strong>
+      </div>
+    </div>
+
+    <div class="sensor-window">
+      <div class="sensor-list">
+        @for (data of sensorData; track data.situation) {
+          <article
+            class="sensor-card"
+            [class.sensor-card-alert]="data.waterLevel === 'Alert'"
+            [class.sensor-card-high]="data.waterLevel === 'High'"
+            [class.sensor-card-medium]="data.waterLevel === 'Medium'"
+            [class.sensor-card-low]="data.waterLevel === 'Low'"
+          >
+            <div class="sensor-card-header">
+              <div class="situation-badge">
+                <span>SITUATION</span>
+                <strong>{{ data.situation }}</strong>
+              </div>
+
+              <div class="level-status">
+                <div class="level-status-icon">
+                  @if (data.waterLevel === "Alert") {
+                    <mat-icon>warning</mat-icon>
+                  } @else if (data.waterLevel === "High") {
+                    <mat-icon>check_circle</mat-icon>
+                  } @else if (data.waterLevel === "Medium") {
+                    <mat-icon>info</mat-icon>
+                  } @else {
+                    <mat-icon>error</mat-icon>
+                  }
+                </div>
+
+                <strong>{{ data.waterLevel }}</strong>
+              </div>
+            </div>
+
+            <div class="sensor-card-readings">
+              <div class="reading">
+                <div class="reading-icon">
+                  <mat-icon>water_drop</mat-icon>
+                </div>
+
+                <div class="reading-content">
+                  <span>Water Level</span>
+                  <strong>{{ data.waterLevel }}</strong>
+                </div>
+              </div>
+
+              <div class="reading">
+                <div class="reading-icon">
+                  <mat-icon>speed</mat-icon>
+                </div>
+
+                <div class="reading-content">
+                  <span>Flow Rate</span>
+                  <strong>{{ data.flowRate }} L/min</strong>
+                </div>
+              </div>
+
+              <div class="reading">
+                <div class="reading-icon">
+                  <mat-icon>science</mat-icon>
+                </div>
+
+                <div class="reading-content">
+                  <span>TDS</span>
+                  <strong>{{ data.tds }} ppm</strong>
+                </div>
+              </div>
+
+              <div class="reading">
+                <div class="reading-icon">
+                  <mat-icon>opacity</mat-icon>
+                </div>
+
+                <div class="reading-content">
+                  <span>pH</span>
+                  <strong>{{ data.ph }}</strong>
+                </div>
+              </div>
+
+              <div class="reading">
+                <div class="reading-icon">
+                  <mat-icon>tune</mat-icon>
+                </div>
+
+                <div class="reading-content">
+                  <span>Preference</span>
+                  <strong
+                    [class.preference-active]="data.preferenceActivated"
+                    [class.preference-inactive]="!data.preferenceActivated"
+                  >
+                    {{ data.preferenceActivated ? "Active" : "Inactive" }}
+                  </strong>
+                </div>
+              </div>
+
+              <div class="reading">
+                <div class="reading-icon">
+                  <mat-icon>power_settings_new</mat-icon>
+                </div>
+
+                <div class="reading-content">
+                  <span>Solenoid</span>
+                  <strong
+                    [class.solenoid-open]="
+                      data.solenoid.toLowerCase() === 'open'
+                    "
+                    [class.solenoid-close]="
+                      data.solenoid.toLowerCase() === 'close'
+                    "
+                  >
+                    {{ data.solenoid }}
+                  </strong>
+                </div>
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+</div>

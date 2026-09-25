@@ -1,0 +1,136 @@
+<div class="impact-container fade-in">
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="eyebrow">
+        <span class="live-dot"></span>
+        COST ANALYSIS
+      </div>
+
+      <h1>
+        Cost Analysis
+        <br />
+        and Financial Projection
+      </h1>
+
+      <p>
+        Prototype cost analysis and financial projection for a residential
+        building consisting of 4 inmates.
+      </p>
+
+      <div class="hero-badges">
+        <div class="badge">
+          <mat-icon>payments</mat-icon>
+          Cost Awareness
+        </div>
+
+        <div class="badge">
+          <mat-icon>water_drop</mat-icon>
+          90 L Capacity
+        </div>
+
+        <div class="badge">
+          <mat-icon>trending_down</mat-icon>
+          24.84% Rate of Return
+        </div>
+      </div>
+    </div>
+
+    <div class="impact-visual">
+      <div class="locker">
+        <div class="locker-inner">
+          <div class="locker-top">
+            <div class="locker-light"></div>
+            <span>COST ANALYSIS</span>
+          </div>
+
+          <div class="locker-door">
+            <div class="locker-handle">
+              <span></span>
+            </div>
+
+            <div class="piggy-bank">
+              <mat-icon>savings</mat-icon>
+            </div>
+
+            <div class="locker-stat">
+              <strong>24.84%</strong>
+              <span>RATE OF RETURN PER YEAR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="metrics-section">
+    <div class="section-header">
+      <div>
+        <span class="section-eyebrow">COST ANALYSIS</span>
+        <h2>Cost Analysis and Financial Projection</h2>
+        <p>
+          Prototype cost, water container capacity, expense saved, and rate of
+          return per year.
+        </p>
+      </div>
+    </div>
+
+    <div class="metrics-grid">
+      @for (item of costs; track item.label) {
+        <app-metric-card
+          [label]="item.label"
+          [value]="
+            item.value.includes(' ') ? item.value.split(' ')[0] : item.value
+          "
+          [unit]="
+            item.value.includes(' ')
+              ? item.value.substring(item.value.indexOf(' ') + 1)
+              : ''
+          "
+          [subText]="item.description"
+          [icon]="getMetricIcon(item.label)"
+          [tone]="getMetricTone(item.label)"
+          [percentage]="getMetricPercentage(item.label)"
+        />
+      }
+
+      <app-metric-card
+        label="Sustainable Development Goal"
+        value="SDG 12"
+        subText="Responsible Consumption"
+        icon="eco"
+        tone="quality"
+        [percentage]="100"
+      />
+    </div>
+  </section>
+
+  <section class="threshold-section">
+    <div class="section-heading">
+      <div>
+        <span class="section-eyebrow">WATER LEVELS</span>
+        <h2>Level Thresholds</h2>
+        <p>Visual indicators for tank levels.</p>
+      </div>
+    </div>
+
+    <div class="threshold-card">
+      @for (t of thresholds; track t.name) {
+        <div class="threshold-row">
+          <span class="threshold-label">
+            {{ t.name }}
+          </span>
+
+          <div class="threshold-track">
+            <div
+              class="threshold-fill"
+              [style.background]="getThresholdColor(t.name)"
+              [style.width.%]="getThresholdWidth(t.name)"
+            ></div>
+          </div>
+
+          <span class="threshold-range">{{ t.range }}</span>
+        </div>
+      }
+    </div>
+  </section>
+</div>

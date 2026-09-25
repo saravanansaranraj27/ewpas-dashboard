@@ -1,0 +1,173 @@
+<div class="dashboard-container fade-in">
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="eyebrow">
+        <span class="live-dot"></span>
+        SYSTEM OVERVIEW
+      </div>
+
+      <h1>
+        Efficient Water Preference
+        <br />
+        and Allocation System
+      </h1>
+
+      <p>
+        Water leakage detection, water overflow detection,
+        <br />
+        efficient water allocation, and water quality analysis.
+      </p>
+
+      <div class="hero-badges">
+        <div class="badge">
+          <mat-icon>water_drop</mat-icon>
+          Clean Water
+        </div>
+
+        <div class="badge">
+          <mat-icon>trending_up</mat-icon>
+          Efficient Use
+        </div>
+
+        <div class="badge">
+          <mat-icon>eco</mat-icon>
+          Sustainable Future
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-image-placeholder">
+      <div class="tank-graphic">
+        <div class="tank-cap"></div>
+
+        <div class="tank-body">
+          <div
+            class="tank-water"
+            [style.height.%]="latestSensor.waterLevelPercent ?? 20"
+          ></div>
+
+          <div class="tank-band tank-band-top"></div>
+          <div class="tank-band tank-band-bottom"></div>
+
+          <div class="tank-brand">
+            <span>OVERHEAD WATER TANK</span>
+          </div>
+        </div>
+
+        <div class="tank-base">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="metrics-section">
+    <div class="section-header">
+      <div>
+        <span class="section-eyebrow">SYSTEM SNAPSHOT</span>
+        <h2>Current Water Status</h2>
+        <p>Latest readings from the connected water monitoring system.</p>
+      </div>
+    </div>
+
+    <div class="metrics-grid">
+      <app-metric-card
+        label="Water Level Status"
+        [value]="latestSensor.waterLevel"
+        subText="vs last hour"
+        icon="water_drop"
+        tone="water"
+        [percentage]="latestSensor.waterLevelPercent ?? 0"
+        colorVar="#38bdf8"
+      />
+
+      <app-metric-card
+        label="Flow Rate"
+        [value]="latestSensor.flowRate"
+        unit="L/min"
+        subText="Situation 4 flow-rate range"
+        icon="speed"
+        tone="flow"
+        [percentage]="78.86"
+        colorVar="#22d3ee"
+      />
+
+      <app-metric-card
+        label="TDS Value"
+        [value]="latestSensor.tds"
+        unit="ppm"
+        subText="Quality Index"
+        icon="sensors"
+        tone="quality"
+        [percentage]="100"
+        colorVar="#f59e0b"
+      />
+
+      <app-metric-card
+        label="pH Level"
+        [value]="latestSensor.ph"
+        subText="Acidity Balance"
+        icon="science"
+        tone="balance"
+        [percentage]="(latestSensor.ph / 14) * 100"
+        colorVar="#10b981"
+      />
+
+      <app-metric-card
+        label="Solenoid Status"
+        [value]="latestSensor.solenoid"
+        subText="Water flow control"
+        icon="power_settings_new"
+        tone="danger"
+        [percentage]="100"
+      />
+    </div>
+  </section>
+
+  <section class="allocation-section">
+    <div class="section-header">
+      <div>
+        <span class="section-eyebrow">WATER MANAGEMENT</span>
+        <h2>Water Allocation</h2>
+        <p>Current allocation, usage, and remaining water.</p>
+      </div>
+    </div>
+
+    <div class="allocation-grid">
+      <app-metric-card
+        label="Allocated"
+        [value]="allocation.allocated.toFixed(2)"
+        unit="L"
+        subText="Total allocated water"
+        icon="account_balance"
+        tone="water"
+        [percentage]="100"
+        colorVar="#3b82f6"
+      />
+
+      <app-metric-card
+        label="Used"
+        [value]="allocation.used.toFixed(2)"
+        unit="L"
+        subText="Water consumed"
+        icon="opacity"
+        tone="quality"
+        [percentage]="(allocation.used / allocation.allocated) * 100"
+        colorVar="#f59e0b"
+      />
+
+      <app-metric-card
+        label="Remaining"
+        [value]="allocation.remaining.toFixed(2)"
+        unit="L"
+        subText="Available water"
+        icon="inventory_2"
+        tone="balance"
+        [percentage]="(allocation.remaining / allocation.allocated) * 100"
+        colorVar="#10b981"
+      />
+    </div>
+  </section>
+</div>

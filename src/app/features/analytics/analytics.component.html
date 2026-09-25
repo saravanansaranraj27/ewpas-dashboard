@@ -1,0 +1,302 @@
+<div class="analytics-container fade-in">
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="eyebrow">
+        <span class="live-dot"></span>
+        ANALYTICS
+      </div>
+
+      <h1>
+        Water Usage Analysis
+        <br />
+        Water Level, Flow Rate and Water Utilization
+      </h1>
+
+      <p>
+        Analysis of water level, flow rate, water utilization,
+        <br />
+        and sensor accuracy.
+      </p>
+
+      <div class="hero-badges">
+        <div class="badge">
+          <mat-icon>bar_chart</mat-icon>
+          Usage Analysis
+        </div>
+
+        <div class="badge">
+          <mat-icon>speed</mat-icon>
+          Flow Monitoring
+        </div>
+
+        <div class="badge">
+          <mat-icon>verified</mat-icon>
+          Sensor Accuracy
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-image-placeholder">
+      <div class="analytics-graphic">
+        <div class="graphic-ring">
+          <div class="graphic-core">
+            <div class="graphic-status">
+              <span class="graphic-live-dot"></span>
+              <span>ANALYTICS</span>
+            </div>
+
+            <div class="graphic-icon">
+              <mat-icon>bar_chart</mat-icon>
+            </div>
+
+            <strong>99.99%</strong>
+
+            <span class="graphic-label">DATA CORRELATION</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="analytics-content">
+    <div class="section-header">
+      <div>
+        <span class="section-eyebrow">ANALYTICS</span>
+
+        <h2>Water Usage Analysis</h2>
+
+        <p>Visual analysis of water consumption and sensor performance.</p>
+      </div>
+    </div>
+
+    <div class="charts-row">
+      <mat-card class="chart-card pie-chart-card">
+        <div class="chart-header">
+          <div class="chart-header-content">
+            <span class="chart-eyebrow">USAGE DISTRIBUTION</span>
+
+            <h3>Average Daily Water Usage</h3>
+
+            <p>
+              Average daily water usage of a residential building (4 Inmates)
+            </p>
+
+            <div class="hover-info" [class.visible]="activePieUsage()">
+              @if (activePieUsage(); as usage) {
+                <span class="hover-info-name">
+                  {{ usage.name }}
+                </span>
+
+                <span class="hover-info-value"> {{ usage.value }} L </span>
+              }
+            </div>
+          </div>
+
+          <div class="chart-header-icon">
+            <mat-icon>pie_chart</mat-icon>
+          </div>
+        </div>
+
+        <div
+          class="chart-container pie-chart-container"
+          (mouseenter)="onPieChartEnter()"
+          (mouseleave)="onPieLeave()"
+        >
+          <ngx-charts-pie-chart
+            [results]="pieData"
+            [scheme]="colorScheme"
+            [legend]="false"
+            [labels]="false"
+            [doughnut]="true"
+            [gradient]="true"
+            [explodeSlices]="false"
+            [activeEntries]="activePieEntries"
+            [animations]="true"
+            [tooltipDisabled]="false"
+            (select)="onPieSelect($event)"
+          >
+          </ngx-charts-pie-chart>
+        </div>
+
+        <div class="graph-legend">
+          <div class="legend-heading">
+            <span class="legend-title">Usage Categories</span>
+
+            <span class="legend-summary">{{ pieTotal }} L total</span>
+          </div>
+
+          <div class="legend-items usage-legend">
+            @for (item of pieData; track item.name; let i = $index) {
+              <div
+                class="legend-item"
+                [class.active]="activePieUsage()?.name === item.name"
+                (mouseenter)="onPieHover(item)"
+                (click)="selectPieLegend(item)"
+                (keydown.enter)="selectPieLegend(item)"
+                (keydown.space)="selectPieLegend(item); $event.preventDefault()"
+                [attr.aria-pressed]="activePieUsage()?.name === item.name"
+                role="button"
+                tabindex="0"
+              >
+                <span
+                  class="legend-dot"
+                  [style.background]="pieColors[i]"
+                ></span>
+
+                <span class="legend-name">
+                  {{ item.name }}
+                </span>
+
+                <span class="legend-value"> {{ item.value }} L </span>
+              </div>
+            }
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card class="chart-card line-chart-card">
+        <div class="chart-header">
+          <div class="chart-header-content">
+            <span class="chart-eyebrow">WATER USAGE ANALYSIS</span>
+
+            <h3>Water Utilized by Situation</h3>
+
+            <p>Water utilized across the four prototype situations</p>
+
+            <div class="hover-info" [class.visible]="activeLinePoint()">
+              @if (activeLinePoint(); as point) {
+                <span class="hover-info-name">
+                  {{ point.name }}
+                </span>
+
+                <span class="hover-info-value"> {{ point.value }} L </span>
+              }
+            </div>
+          </div>
+
+          <div class="chart-header-icon">
+            <mat-icon>show_chart</mat-icon>
+          </div>
+        </div>
+
+        <div
+          #lineChartContainer
+          class="chart-container line-chart-container"
+          (mouseenter)="onLineChartEnter()"
+          (mouseleave)="onLineLeave()"
+        >
+          <ngx-charts-line-chart
+            [results]="lineData"
+            [scheme]="lineColorScheme"
+            [legend]="false"
+            [xAxis]="true"
+            [yAxis]="true"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            xAxisLabel="Situation"
+            yAxisLabel="Water Utilized (L)"
+            [animations]="false"
+            [tooltipDisabled]="false"
+            [autoScale]="false"
+            [yScaleMin]="0"
+            [yScaleMax]="60"
+            [roundDomains]="false"
+            [trimXAxisTicks]="false"
+            [rotateXAxisTicks]="false"
+            [showGridLines]="true"
+            [gradient]="true"
+            (activate)="onLineActivate($event)"
+            (select)="onLineSelect($event)"
+          >
+          </ngx-charts-line-chart>
+        </div>
+
+        <div class="graph-legend">
+          <div class="legend-heading">
+            <span class="legend-title">Water Utilization</span>
+
+            <span class="legend-summary">{{ lineTotal }} L total</span>
+          </div>
+
+          <div class="legend-items line-usage-legend">
+            @for (point of lineData[0].series; track point.name) {
+              <div
+                class="legend-item line-legend-item"
+                [class.active]="selectedLinePoint()?.name === point.name"
+                (mouseenter)="onLineHover(point)"
+                (mouseleave)="onLineLegendLeave()"
+                (click)="selectLineLegend(point)"
+                (keydown.enter)="selectLineLegend(point)"
+                (keydown.space)="
+                  selectLineLegend(point); $event.preventDefault()
+                "
+                [attr.aria-pressed]="selectedLinePoint()?.name === point.name"
+                role="button"
+                tabindex="0"
+              >
+                <span class="line-legend-marker"></span>
+
+                <span class="legend-name">
+                  {{ point.name }}
+                </span>
+
+                <span class="legend-value"> {{ point.value }} L </span>
+              </div>
+            }
+          </div>
+        </div>
+
+        <div
+          class="chart-note situation-four-note"
+          (mouseenter)="previewSituationFour()"
+          (mouseleave)="onLineLegendLeave()"
+          (focus)="previewSituationFour()"
+          (blur)="onLineLegendLeave()"
+          (click)="selectSituationFour()"
+          (keydown.enter)="selectSituationFour()"
+          (keydown.space)="selectSituationFour(); $event.preventDefault()"
+          role="button"
+          tabindex="0"
+          [attr.aria-label]="
+            'Highlight Situation 4: low water-level condition with 20% water left'
+          "
+        >
+          <span class="situation-note-dot"></span>
+
+          <span>
+            Situation 4 reaches the low water-level condition with 20% water
+            left.
+          </span>
+        </div>
+      </mat-card>
+    </div>
+
+    <section class="insights-section">
+      <div class="insights-heading">
+        <div>
+          <span class="section-eyebrow">WATER USAGE ANALYSIS</span>
+
+          <h2>System Performance Insights</h2>
+
+          <p>
+            Key observations from the water level, flow rate and utilization
+            analysis.
+          </p>
+        </div>
+      </div>
+
+      <div class="analysis-grid">
+        @for (metric of analysisMetrics; track metric.category) {
+          <app-metric-card
+            [label]="metric.category"
+            [value]="metric.title"
+            [subText]="metric.description"
+            [icon]="metric.icon"
+            [tone]="metric.tone"
+            [percentage]="metric.percentage"
+          />
+        }
+      </div>
+    </section>
+  </section>
+</div>
