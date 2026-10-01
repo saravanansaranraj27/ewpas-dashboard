@@ -1,0 +1,22 @@
+<mat-card class="stat-card" [class]="'stat-card tone-' + tone()">
+  <div class="card-header">
+    <span class="label">{{ label() }}</span>
+
+    <div class="icon-wrap">
+      <mat-icon>{{ icon() }}</mat-icon>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="value-group">
+      <span class="main-value">{{ value() }}</span>
+      <span class="unit">{{ unit() }}</span>
+    </div>
+
+    <p class="sub-text">{{ subText() }}</p>
+  </div>
+
+  <div class="progress-bar-bg">
+    <div class="progress-fill" [style.width.%]="percentage() ?? 0"></div>
+  </div>
+</mat-card>

@@ -1,0 +1,17 @@
+@if (isLoading()) {
+  <app-loading-indicator />
+} @else {
+  <div class="layout-wrapper">
+    <app-navbar></app-navbar>
+
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+
+    <app-back-to-top />
+
+    <footer class="app-footer">
+      Built with Angular & SCSS © 2026 Saran Raj Saravanan
+    </footer>
+  </div>
+}

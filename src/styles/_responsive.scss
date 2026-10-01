@@ -1,0 +1,43 @@
+$breakpoint-xs: 420px;
+$breakpoint-sm: 600px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 900px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1440px;
+
+@mixin fluid-container($max-width: 1760px) {
+  width: 100%;
+  max-width: $max-width;
+  margin-inline: auto;
+  padding-inline: clamp(0.75rem, 2vw, 2rem);
+  box-sizing: border-box;
+}
+
+@mixin safe-content {
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+@mixin touch-target {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+@mixin stack-at($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin mobile-only {
+  @media (max-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin tablet-and-below {
+  @media (max-width: $breakpoint-lg) {
+    @content;
+  }
+}

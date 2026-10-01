@@ -1,0 +1,1366 @@
+@use "../../../styles/responsive" as responsive;
+
+.analytics-container {
+  width: 100%;
+  max-width: 1760px;
+  margin: 0 auto;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.hero-section {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 40px;
+  width: 100%;
+  height: 456px;
+  min-height: 456px;
+  margin-bottom: 32px;
+  padding: 40px 48px;
+  overflow: hidden;
+  box-sizing: border-box;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  background: #087fb8;
+  box-shadow: 0 18px 45px rgba(2, 132, 199, 0.18);
+}
+
+.hero-content,
+.hero-image-placeholder {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  align-self: center;
+}
+
+.eyebrow,
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  color: rgba(255, 255, 255, 0.84);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.live-dot,
+.graphic-live-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.situation-note-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: var(--error);
+}
+
+.hero-content h1 {
+  margin: 0 0 20px;
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.16;
+}
+
+.hero-content p {
+  max-width: 700px;
+  margin: 0 0 26px;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 8px 16px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 24px;
+  background: rgba(7, 95, 135, 0.78);
+  font-size: 0.88rem;
+}
+
+.badge mat-icon {
+  color: #fff;
+}
+
+.hero-image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.analytics-graphic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
+}
+
+.graphic-ring {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 270px;
+  height: 270px;
+  box-sizing: border-box;
+  border: 12px solid #67e8f9;
+  border-radius: 50%;
+}
+
+.graphic-core {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 220px;
+  box-sizing: border-box;
+  color: #fff;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  background: #075f87;
+}
+
+.graphic-status {
+  position: absolute;
+  top: 27px;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.graphic-status > span:last-child {
+  transform: translateY(-5px);
+}
+
+.graphic-live-dot {
+  transform: translateY(-5px);
+}
+
+.graphic-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 12px;
+}
+
+.graphic-icon mat-icon {
+  width: 34px;
+  height: 34px;
+  color: #67e8f9;
+  font-size: 34px;
+  line-height: 34px;
+}
+
+.graphic-core strong {
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+.graphic-label {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.analytics-content {
+  min-width: 0;
+}
+
+.section-header {
+  margin-bottom: 20px;
+}
+
+.section-header .section-eyebrow,
+.insights-heading .section-eyebrow {
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+
+.section-header h2,
+.insights-heading h2 {
+  margin: 0 0 6px;
+  color: var(--text-primary);
+  font-size: 1.55rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.section-header p,
+.insights-heading p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.charts-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 30px;
+  align-items: stretch;
+}
+
+.chart-card {
+  position: relative;
+  min-width: 0;
+  height: auto;
+  min-height: 620px;
+  padding: 0;
+  overflow: visible;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.chart-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 16px 40px -12px var(--accent-glow);
+  transform: translateY(-2px);
+}
+
+.pie-chart-card {
+  min-height: 660px;
+}
+
+.chart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 26px 26px 0;
+}
+
+.chart-header-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.chart-eyebrow {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.chart-header h3 {
+  margin: 0 0 6px;
+  color: var(--text-primary);
+  font-size: 1.35rem;
+  font-weight: 750;
+  line-height: 1.25;
+}
+
+.chart-header p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.chart-header-icon {
+  display: flex;
+  flex: 0 0 48px;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  color: var(--accent);
+  border: 1px solid rgba(var(--accent-rgb), 0.35);
+  border-radius: 15px;
+  background: rgba(var(--accent-rgb), 0.1);
+}
+
+.chart-header-icon mat-icon {
+  color: var(--accent);
+}
+
+.hover-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  min-width: 190px;
+  max-width: 100%;
+  min-height: 36px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0 10px;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  border: 0;
+  border-radius: 7px;
+  background: rgba(var(--accent-rgb), 0.1);
+  transition: 0.2s ease;
+}
+
+.hover-info.visible {
+  padding: 8px 12px;
+  opacity: 1;
+  transform: translateY(0);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+}
+
+.hover-info-name {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hover-info-value {
+  flex: 0 0 auto;
+  padding: 3px 8px;
+  color: #fff;
+  border-radius: 5px;
+  background: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: visible;
+  border-top: 0;
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.12);
+  background: var(--bg-elevated);
+}
+
+.pie-chart-container {
+  height: 330px;
+  padding: 0;
+}
+
+.line-chart-container {
+  height: 330px;
+  padding: 4px 0 0;
+}
+
+.chart-container ngx-charts-pie-chart,
+.chart-container ngx-charts-line-chart {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+}
+
+.chart-container ::ng-deep .ngx-charts {
+  overflow: visible;
+}
+
+.chart-container ::ng-deep svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.chart-container ::ng-deep text,
+.chart-container ::ng-deep tspan {
+  fill: var(--text-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.chart-container ::ng-deep .axis text,
+.chart-container ::ng-deep .axis .tick text {
+  fill: var(--text-primary);
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.chart-container ::ng-deep .axis-label {
+  fill: var(--text-primary);
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.line-chart-container ::ng-deep .x.axis .tick:nth-of-type(4) text {
+  text-anchor: end;
+}
+
+.chart-container ::ng-deep .axis path,
+.chart-container ::ng-deep .axis line {
+  stroke: var(--border-soft);
+  stroke-width: 1.2px;
+}
+
+.chart-container ::ng-deep .gridline-path {
+  stroke: var(--border-soft);
+  stroke-width: 1px;
+  stroke-dasharray: 5 5;
+  opacity: 0.9;
+}
+
+.chart-container ::ng-deep .line-series .line {
+  stroke: #38bdf8;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.line-chart-container ::ng-deep .line-series:not(.inactive) .line {
+  stroke-width: 3.5px;
+  filter: drop-shadow(0 3px 5px rgba(56, 189, 248, 0.35));
+}
+
+.line-chart-container ::ng-deep .ewpas-point-layer {
+  pointer-events: none;
+}
+
+.line-chart-container ::ng-deep .ewpas-chart-point {
+  pointer-events: none;
+}
+
+.line-chart-container ::ng-deep .ewpas-chart-point.selected {
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.95));
+}
+
+.line-chart-container ::ng-deep .line-series .circle {
+  cursor: pointer;
+}
+
+.line-chart-container ::ng-deep .line-series circle.circle {
+  r: 6px;
+  fill: #38bdf8;
+  stroke: var(--bg-elevated);
+  stroke-width: 2.5px;
+  transition:
+    r 0.18s ease,
+    fill 0.18s ease,
+    stroke 0.18s ease,
+    filter 0.18s ease;
+}
+
+.line-chart-container ::ng-deep .line-series .circle:hover,
+.line-chart-container ::ng-deep .line-series circle.circle:hover {
+  r: 7px;
+  fill: #67e8f9;
+  stroke: #ffffff;
+  stroke-width: 3px;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
+}
+
+.line-chart-container ::ng-deep .line-series .circle.persistent-selected,
+.line-chart-container ::ng-deep .line-series circle.persistent-selected {
+  r: 8px;
+  fill: #67e8f9;
+  stroke: #ffffff;
+  stroke-width: 3px;
+  filter: drop-shadow(0 0 9px rgba(56, 189, 248, 0.9));
+}
+
+.chart-container ::ng-deep .ngx-charts-tooltip-content {
+  z-index: 9999;
+  min-width: 120px;
+  padding: 10px 12px;
+  color: var(--text-primary);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-lg);
+}
+
+.pie-chart-card .chart-container,
+.line-chart-card .chart-container {
+  isolation: isolate;
+}
+
+.line-chart-card .graph-legend {
+  margin-top: 2px;
+}
+
+.graph-legend {
+  margin: 0 24px 18px;
+  padding: 13px 0 0;
+}
+
+.legend-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.legend-title {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.legend-summary {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.legend-items {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3px 14px;
+}
+
+.usage-legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 18px;
+  row-gap: 2px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 34px;
+  padding: 5px 8px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+}
+
+.legend-item:hover,
+.legend-item.active,
+.legend-item:focus-visible {
+  border-color: rgba(var(--accent-rgb), 0.45);
+  background: rgba(var(--accent-rgb), 0.1);
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+}
+
+.legend-name {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  color: var(--text-primary);
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.legend-value {
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.line-legend-item {
+  flex: 1 1 180px;
+  min-width: 180px;
+}
+
+.line-usage-legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px 12px;
+}
+
+.line-legend-marker {
+  position: relative;
+  width: 25px;
+  height: 2px;
+  flex: 0 0 25px;
+  border-radius: 4px;
+  background: #38bdf8;
+}
+
+.line-legend-marker::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--bg-elevated);
+  border-radius: 50%;
+  background: #38bdf8;
+}
+
+.line-legend-item.active {
+  border-color: rgba(var(--accent-rgb), 0.45);
+  background: rgba(var(--accent-rgb), 0.1);
+}
+
+.line-legend-item.active .line-legend-marker {
+  height: 3px;
+  background: #67e8f9;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+}
+
+.line-legend-item.active .line-legend-marker::after {
+  width: 7px;
+  height: 7px;
+  background: #67e8f9;
+  box-shadow: 0 0 7px rgba(56, 189, 248, 0.8);
+}
+
+.chart-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 24px 18px;
+  padding: 0;
+  color: var(--text-secondary);
+  border: 0;
+  background: transparent;
+  font-size: 0.74rem;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.chart-note > span:last-child {
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.situation-four-note {
+  cursor: pointer;
+  outline: none;
+  transition: color 0.2s ease;
+}
+
+.situation-four-note:hover,
+.situation-four-note:focus-visible {
+  color: var(--text-primary);
+}
+
+.insights-section {
+  position: relative;
+  padding: 0;
+}
+
+.insights-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 0 12px;
+}
+
+.analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.analysis-grid app-metric-card {
+  display: block;
+  min-width: 0;
+}
+
+@media (max-width: 1250px) {
+  .analytics-container {
+    padding: 24px;
+  }
+
+  .chart-header {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .pie-chart-container,
+  .line-chart-container {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .analysis-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1100px) {
+  .charts-row {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-card {
+    height: auto;
+    min-height: 0;
+  }
+
+  .pie-chart-card {
+    min-height: 700px;
+  }
+
+  .line-chart-card {
+    min-height: 620px;
+  }
+
+  .pie-chart-container {
+    height: 330px;
+    padding: 0;
+  }
+
+  .line-chart-container {
+    height: 330px;
+    padding: 4px 0 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    width: 100%;
+    height: 680px;
+    min-height: 680px;
+    gap: 22px;
+    padding: 32px 24px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .hero-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-content h1 br,
+  .hero-content p br {
+    display: none;
+  }
+
+  .hero-badges {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .badge {
+    justify-content: center;
+    width: 100%;
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+
+  .hero-image-placeholder {
+    width: 100%;
+    height: 230px;
+    min-height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .eyebrow {
+    justify-content: center;
+  }
+
+  .analytics-graphic {
+    width: 240px;
+    height: 240px;
+  }
+
+  .graphic-ring {
+    width: 225px;
+    height: 225px;
+    border-width: 10px;
+  }
+
+  .graphic-core {
+    width: 180px;
+    height: 180px;
+  }
+
+  .graphic-core strong {
+    font-size: 2rem;
+  }
+
+  .graphic-label {
+    font-size: 0.55rem;
+  }
+
+  .graphic-status {
+    top: 23px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    height: auto;
+    min-height: 620px;
+    gap: 18px;
+    padding: 24px 20px 28px;
+    border-radius: 18px;
+  }
+
+  .hero-image-placeholder {
+    width: 100%;
+    height: 220px;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .analytics-container {
+    padding: 16px;
+  }
+
+  .analytics-graphic {
+    width: 220px;
+    height: 220px;
+  }
+
+  .graphic-ring {
+    width: 205px;
+    height: 205px;
+    border-width: 9px;
+  }
+
+  .graphic-core {
+    width: 165px;
+    height: 165px;
+  }
+
+  .graphic-core strong {
+    font-size: 1.8rem;
+  }
+
+  .graphic-label {
+    font-size: 0.52rem;
+  }
+
+  .graphic-status {
+    top: 21px;
+  }
+
+  .charts-row {
+    gap: 16px;
+  }
+
+  .chart-card {
+    height: auto;
+    border-radius: 18px;
+    min-height: 0;
+  }
+
+  .chart-header {
+    gap: 12px;
+    padding: 18px 16px 0;
+  }
+
+  .chart-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  .chart-header h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .chart-header p {
+    font-size: 0.78rem;
+  }
+
+  .chart-header-icon {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+    border-radius: 12px;
+  }
+
+  .pie-chart-container {
+    height: 300px;
+    padding: 0;
+  }
+
+  .line-chart-container {
+    height: 310px;
+    padding: 0;
+  }
+
+  .chart-container ::ng-deep text,
+  .chart-container ::ng-deep tspan {
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .chart-container ::ng-deep .axis text,
+  .chart-container ::ng-deep .axis .tick text {
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .chart-container ::ng-deep .axis-label {
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .graph-legend {
+    margin: 0 16px 15px;
+  }
+
+  .line-usage-legend {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .line-legend-item {
+    min-width: 0;
+  }
+
+  .usage-legend {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 2px;
+  }
+
+  .legend-name,
+  .legend-value {
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+
+  .chart-note {
+    align-items: flex-start;
+    margin: 0 16px 16px;
+    font-size: 0.68rem;
+  }
+
+  .insights-heading {
+    padding: 0;
+  }
+
+  .analysis-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-section {
+    height: auto;
+    min-height: 610px;
+    gap: 14px;
+    padding: 22px 18px 28px;
+  }
+
+  .hero-image-placeholder {
+    height: 205px;
+    min-height: 205px;
+  }
+
+  .analytics-container {
+    padding: 12px;
+  }
+
+  .analytics-graphic {
+    width: 200px;
+    height: 200px;
+  }
+
+  .graphic-ring {
+    width: 188px;
+    height: 188px;
+    border-width: 9px;
+  }
+
+  .graphic-core {
+    width: 150px;
+    height: 150px;
+  }
+
+  .graphic-core strong {
+    font-size: 1.65rem;
+  }
+
+  .graphic-label {
+    font-size: 0.5rem;
+  }
+
+  .graphic-status {
+    top: 19px;
+  }
+
+  .chart-header {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .chart-header h3 {
+    font-size: 1.02rem;
+  }
+
+  .chart-header p {
+    font-size: 0.72rem;
+  }
+
+  .chart-header-icon {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .pie-chart-container {
+    height: 280px;
+    padding: 0;
+  }
+
+  .line-chart-container {
+    height: 290px;
+    padding: 0;
+  }
+
+  .chart-container ::ng-deep text,
+  .chart-container ::ng-deep tspan {
+    font-size: 11px;
+  }
+
+  .chart-container ::ng-deep .axis text,
+  .chart-container ::ng-deep .axis .tick text {
+    font-size: 11px;
+  }
+
+  .chart-container ::ng-deep .axis-label {
+    font-size: 11px;
+  }
+
+  .legend-items {
+    gap: 3px 7px;
+  }
+
+  .legend-name,
+  .legend-value {
+    font-size: 0.68rem;
+    font-weight: 600;
+  }
+
+  .graph-legend {
+    margin-right: 14px;
+    margin-left: 14px;
+  }
+
+  .chart-note {
+    margin-right: 14px;
+    margin-left: 14px;
+  }
+}
+
+.analytics-container {
+  width: 100%;
+  max-width: 1760px;
+  margin: 0 auto;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.analytics-container {
+  @include responsive.fluid-container;
+  min-width: 0;
+  overflow: clip;
+}
+
+.analytics-content,
+.hero-content,
+.hero-image-placeholder,
+.charts-row,
+.chart-card,
+.chart-header,
+.chart-header-content,
+.chart-container,
+.graph-legend,
+.legend-items,
+.legend-item,
+.analysis-grid,
+.analysis-grid app-metric-card {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.hero-content h1,
+.hero-content p,
+.chart-header h3,
+.chart-header p,
+.legend-name,
+.legend-value,
+.chart-note,
+.hover-info-name {
+  @include responsive.safe-content;
+}
+
+.hero-section {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.chart-card {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.chart-container ngx-charts-pie-chart,
+.chart-container ngx-charts-line-chart,
+.chart-container ::ng-deep .ngx-charts,
+.chart-container ::ng-deep svg {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.chart-container ::ng-deep svg {
+  overflow: hidden;
+}
+
+.legend-name {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.legend-value {
+  white-space: normal;
+  text-align: right;
+}
+
+.usage-legend,
+.line-usage-legend {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+}
+
+@media (max-width: 1100px) {
+  .charts-row {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-card {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-section {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .hero-image-placeholder {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .chart-container {
+    height: clamp(260px, 45vw, 330px);
+  }
+
+  .pie-chart-container,
+  .line-chart-container {
+    height: clamp(260px, 45vw, 330px);
+  }
+}
+
+@media (max-width: 600px) {
+  .analytics-container {
+    padding-inline: clamp(0.75rem, 4vw, 1rem);
+  }
+
+  .hero-section {
+    gap: 1rem;
+    padding-inline: clamp(1rem, 5vw, 1.25rem);
+  }
+
+  .hero-content h1 {
+    font-size: clamp(1.65rem, 8vw, 2rem);
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .chart-header {
+    align-items: flex-start;
+  }
+
+  .chart-header-content {
+    width: 100%;
+  }
+
+  .chart-header h3 {
+    font-size: clamp(1rem, 5vw, 1.2rem);
+  }
+
+  .chart-header p {
+    font-size: 0.78rem;
+  }
+
+  .chart-container {
+    height: clamp(240px, 65vw, 300px);
+  }
+
+  .pie-chart-container,
+  .line-chart-container {
+    height: clamp(240px, 65vw, 300px);
+  }
+
+  .usage-legend,
+  .line-usage-legend {
+    grid-template-columns: 1fr;
+  }
+
+  .legend-item {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .legend-name {
+    overflow-wrap: anywhere;
+  }
+
+  .legend-value {
+    flex: 0 0 auto;
+  }
+
+  .chart-note {
+    align-items: flex-start;
+  }
+
+  .insights-heading {
+    padding-inline: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .chart-container {
+    height: clamp(220px, 68vw, 280px);
+  }
+
+  .pie-chart-container,
+  .line-chart-container {
+    height: clamp(220px, 68vw, 280px);
+  }
+
+  .chart-header {
+    padding-inline: 0.8rem;
+  }
+
+  .graph-legend {
+    margin-inline: 0.8rem;
+  }
+
+  .chart-note {
+    margin-inline: 0.8rem;
+  }
+
+  .legend-name,
+  .legend-value {
+    font-size: 0.7rem;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 600px) and (max-width: 768px) {
+  .hero-section {
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 0.75fr);
+    min-height: 0;
+  }
+
+  .hero-image-placeholder {
+    height: auto;
+    min-height: 200px;
+  }
+
+  .chart-container,
+  .pie-chart-container,
+  .line-chart-container {
+    height: 260px;
+  }
+}
